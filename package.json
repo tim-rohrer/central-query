@@ -1,0 +1,60 @@
+{
+  "name": "central-query",
+  "version": "0.1.0-alpha",
+  "description": "",
+  "main": "./dist/index.js",
+  "scripts": {
+    "start": "node dist/index.js",
+    "start-dev": "tsx watch src/index.ts",
+    "test": "NODE_OPTIONS=--experimental-vm-modules npx jest",
+    "test-dev": "NODE_OPTIONS=--experimental-vm-modules npx jest --watch",
+    "build:clean": "rm -rf dist/*",
+    "build": "npm run build:clean && tsc --project tsconfig.json"
+  },
+  "keywords": [],
+  "author": "Tim Rohrer",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/cookie-parser": "^1.4.3",
+    "@types/cors": "^2.8.13",
+    "@types/jest": "^29.5.4",
+    "@types/luxon": "^3.3.1",
+    "@types/morgan": "^1.9.5",
+    "@types/node": "^20.5.6",
+    "@typescript-eslint/eslint-plugin": "^6.4.1",
+    "@typescript-eslint/parser": "^6.4.1",
+    "cypress": "^13.1.0",
+    "eslint": "^8.48.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-cypress": "^2.14.0",
+    "eslint-plugin-import": "^2.28.1",
+    "eslint-plugin-jest": "^27.2.3",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "jest": "^29.6.4",
+    "mongodb-memory-server": "^8.15.1",
+    "prettier": "^3.0.2",
+    "ts-jest": "^29.1.1",
+    "tsx": "^3.12.8",
+    "typescript": "^5.2.2"
+  },
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "types": "./dist/index.d.ts",
+  "type": "module",
+  "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express-http-problem-details": "^0.2.1",
+    "express-validator": "^7.0.1",
+    "helmet": "^7.0.0",
+    "http-problem-details-mapper": "^0.1.7",
+    "luxon": "^3.4.2",
+    "mongodb": "^5.8.1",
+    "morgan": "^1.10.0",
+    "ts-results-es": "^3.6.1",
+    "winston": "^3.10.0"
+  }
+}
