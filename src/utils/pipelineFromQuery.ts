@@ -1,6 +1,6 @@
 import * as MongoDB from "mongodb"
 
-import Logger from "../common/logger"
+import Logger from "../common/logger.js"
 import { PipelineFields } from "../endpoint-options.types"
 
 export const pipelineFromQuery = (query: PipelineFields) => {
