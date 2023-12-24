@@ -3,6 +3,7 @@ FROM node:latest AS build
 RUN apt-get update && apt-get install -y --no-install-recommends dumb-init
 COPY package*.json /
 RUN npm ci --omit=dev
+RUN npm run build
 
 # --------------> The production image
 FROM node:20.5.1-bookworm-slim
