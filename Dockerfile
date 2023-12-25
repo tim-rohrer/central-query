@@ -21,4 +21,4 @@ WORKDIR /app
 COPY package*.json  ./
 COPY --chown=node:node --from=build /build/node_modules ./node_modules
 COPY --chown=node:node --from=build /build/dist/ ./dist/
-CMD ["node", "/app/dist/index.js"]
+CMD ["dumb-init", "node", "/app/dist/index.js"]
