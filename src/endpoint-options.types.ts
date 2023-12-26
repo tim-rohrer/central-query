@@ -9,6 +9,11 @@ export interface NextOptions extends BasicFilter {
   hours: number
 }
 
+export interface DayOptions extends BasicFilter {
+  weekday: number
+  offset: number
+}
+
 export type RTCRange = {
   lowerRTC: string
   upperRTC: string

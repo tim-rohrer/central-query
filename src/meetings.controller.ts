@@ -55,19 +55,20 @@ export const meetingsNext = async (
 //   }
 // }
 
-// export const getByDay = async (
-//   req: express.Request,
-//   res: express.Response,
-//   next: express.NextFunction,
-// ) => {
-//   const weekday = req.query.weekday as string
-//   Logger.debug(`Request params for getByDay: ${JSON.stringify(req.query)}`)
-//   const { ok, val } = await getDay(weekday)
-//   if (ok) {
-//     Logger.info(`fetch result being returned includes ${val.length} meetings.`)
-//     res.status(200).json(val)
-//   } else {
-//     Logger.error(`${JSON.stringify(val)}`)
-//     next(val)
-//   }
-// }
+export const byDay = async (
+  req: express.Request,
+  res: express.Response,
+  next: express.NextFunction,
+) => {
+  const weekday = Number(req.query.weekday as string)
+  const offset = Number(req.query.offset as string)
+  Logger.debug(`Request params for getByDay: ${JSON.stringify(req.query)}`)
+  const { ok, val } = await meetingsService.getDay({ weekday, offset })
+  if (ok) {
+    Logger.info(`fetch result being returned includes ${val.length} meetings.`)
+    res.status(200).json(val)
+  } else {
+    Logger.error(`${JSON.stringify(val)}`)
+    next(val)
+  }
+}

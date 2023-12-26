@@ -71,3 +71,47 @@ export const lowerUpperLimits = (time: string, hours: number) => {
 
   return ranges
 }
+
+const zeroPad = (num: number, places: number) =>
+  String(num).padStart(places, "0")
+
+const dayFromOffset = (weekday: number, offset: number) =>
+  correctedDay(offset > 0 ? weekday - 1 : weekday)
+
+const correctedDay = (num: number) => {
+  if (num === 0) return 7
+  if (num === 8) return 1
+  return num
+}
+
+const hrsMinsFromOffset = (offset: number) => {
+  const hourAdj = Math.floor((0 - offset) / 60)
+  return {
+    localHour: hourAdj < 0 ? hourAdj + 24 : hourAdj,
+    localMin: offset % 60,
+  }
+}
+
+const startParts = (weekday: number, offset: number) => {
+  const { localHour, localMin } = hrsMinsFromOffset(offset)
+  return {
+    day: dayFromOffset(weekday, offset),
+    hour: zeroPad(localHour, 2),
+    mins: zeroPad(localMin, 2),
+  }
+}
+
+export const dayLimits = (weekday: number, offset: number) => {
+  const { day, hour, mins } = startParts(weekday, offset)
+  const endDay = correctedDay(day + 1)
+  return [
+    {
+      lowerRTC: `${day}:${hour}:${mins}`,
+      upperRTC: `${day}:24:00`,
+    },
+    {
+      lowerRTC: `${endDay}:00:00`,
+      upperRTC: `${endDay}:${hour}:${mins}`,
+    },
+  ]
+}

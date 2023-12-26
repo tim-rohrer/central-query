@@ -16,8 +16,7 @@ router.route("/next").get(
   meetingsController.meetingsNext,
 )
 
-// router.route("/next").get(meetingsController.getNext)
-// router.route("/by-day").get(meetingsController.getByDay)
+router.route("/by-day").get(meetingsController.byDay)
 
 // router
 //   .route("/store-import")
