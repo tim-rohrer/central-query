@@ -36,7 +36,7 @@ const errorHandler: ErrorRequestHandler = (
 }
 
 app.use(helmet())
-app.use(cors({ origin: "http://localhost:5173" }))
+app.use(cors({ origin: "https://central-demo.apps.code4recovery.org" }))
 app.use(cookieParser())
 if (process.env.NODE_ENV !== "prod") app.use(morgan("dev"))
 app.use(express.json({ limit: "50mb" }))
